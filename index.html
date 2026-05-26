@@ -1,391 +1,1001 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Charset & Meta -->
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8"/>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 
-  <!-- SEO -->
-  <title>LokaLaku Trip - Where Every Journey Finds Its Soul</title>
-  <meta name="description" content="LokaLaku is a travel service that offers meaningful and soulful journeys across Indonesia. Discover open trips to Bali, Lombok, Malang, and more.">
-  <meta name="keywords" content="LokaLaku Trip, open trip Indonesia, travel Yogyakarta Bali, tour Lombok Malang, paket wisata murah, explore Nusantara">
+    <title>LokaLaku Trip - Where Every Journey Finds Its Soul</title>
+    <meta content="LokaLaku Trip creates curated private tours and open trips across Indonesia, from Yogyakarta and Malang to Bali, Bromo, Ijen, Dieng, Baluran, and Banyuwangi." name="description"/>
+    <meta content="LokaLaku Trip, open trip Indonesia, private tour Indonesia, Yogyakarta tour, Bali tour, Bromo Ijen tour, Malang tour, paket wisata Indonesia" name="keywords"/>
 
-  <!-- Social Sharing -->
-  <meta property="og:title" content="LokaLaku Trip - Where Every Journey Finds Its Soul" />
-  <meta property="og:description" content="LokaLaku is a travel service that offers meaningful and soulful journeys across Indonesia." />
-  <meta property="og:image" content="https://lokalaku.vercel.app/images/Logo.jpg" />
-  <meta property="og:url" content="https://lokalaku.vercel.app" />
-  <meta property="og:type" content="website" />
+    <meta content="LokaLaku Trip - Where Every Journey Finds Its Soul" property="og:title"/>
+    <meta content="LokaLaku is a travel service that offers meaningful and soulful journeys across Indonesia." property="og:description"/>
+    <meta content="https://lokalaku.vercel.app/images/Logo.webp" property="og:image"/>
+    <meta content="LokaLaku Trip - Where Every Journey Finds Its Soul" property="og:image:alt"/>
+    <meta content="https://lokalaku.vercel.app" property="og:url"/>
+    <meta content="website" property="og:type"/>
+    <meta content="summary_large_image" name="twitter:card"/>
+    <meta content="LokaLaku Trip - Where Every Journey Finds Its Soul" name="twitter:title"/>
+    <meta content="LokaLaku is a travel service that offers meaningful and soulful journeys across Indonesia." name="twitter:description"/>
+    <meta content="https://lokalaku.vercel.app/images/Logo.webp" name="twitter:image"/>
 
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="LokaLaku Trip - Where Every Journey Finds Its Soul" />
-  <meta name="twitter:description" content="LokaLaku is a travel service that offers meaningful and soulful journeys across Indonesia." />
-  <meta name="twitter:image" content="https://lokalaku.vercel.app/images/Logo.jpg" />
+    <meta name="google-adsense-account" content="ca-pub-2226407434436295">
 
-  <!-- Icons -->
-  <link rel="icon" type="image/png" href="/favicon.png" />
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link href="/favicon.webp" rel="icon" type="image/webp"/>
+    <link href="/apple-touch-icon.webp" rel="apple-touch-icon"/>
 
-  <!-- Styles -->
-  <link rel="stylesheet" href="css/bootstrap.min.css" />
-  <link rel="stylesheet" href="css/animate.min.css" />
-  <link rel="stylesheet" href="css/font-awesome.min.css" />
-  <link rel="stylesheet" href="css/style.css" />
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,300&display=swap" rel="stylesheet" />
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="css/animate.min.css" rel="stylesheet"/>
+    <link href="css/component.css" rel="stylesheet"/>
+    <link href="css/owl.theme.css" rel="stylesheet"/>
+    <link href="css/owl.carousel.css" rel="stylesheet"/>
+    <link href="css/vegas.min.css" rel="stylesheet"/>
+    <link href="css/all.min.css" rel="stylesheet"/>
+    <link href="css/style.css" rel="stylesheet"/>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,300" rel="stylesheet"/>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2226407434436295" crossorigin="anonymous"></script>
+
+    <style>
+        .custom-modal {
+            background-color: rgba(0, 0, 0, 0.6);
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s;
+        }
+        .custom-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .custom-modal-content {
+            position: relative;
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+            border-radius: 8px;
+            transform: scale(0.95);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        .custom-modal.active .custom-modal-content {
+            transform: scale(1);
+            opacity: 1;
+        }
+        .custom-modal-close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            z-index: 10;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .custom-modal-close:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        .custom-slideshow {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            margin-bottom: 0;
+            border-radius: 6px;
+        }
+        .slides-wrapper {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .slide {
+            min-width: 100%;
+            box-sizing: border-box;
+        }
+        .slide img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .slideshow-dots {
+            position: absolute;
+            bottom: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 5;
+            padding: 0;
+        }
+        .dot {
+            cursor: pointer;
+            height: 10px;
+            width: 10px;
+            margin: 0 4px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+        .dot.active, .dot:hover {
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+        .modal-list-wrapper ul {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0 20px;
+            padding-left: 20px;
+        }
+        
+        .custom-modal-content h1 {
+            margin-top: 8px;
+            margin-bottom: 0; /* Dirapatkan lagi */
+            font-size: 28px;
+        }
+        .custom-modal-content h2 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        .price-label {
+            color: #E35536;
+            font-weight: bold;
+        }
+        .wa-button {
+            display: block;
+            width: 80%;
+            margin: 20px auto 0 auto;
+            text-align: center;
+        }
+    </style>
 </head>
-<body id="top" data-spy="scroll" data-offset="50" data-target=".navbar-collapse">
 
-	<!-- Preloader section -->
-
-<div class="preloader">
-     <div class="sk-spinner sk-spinner-pulse"></div>
-</div>
-
-
-<!-- Navigation section  -->
-
-  <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+<body data-offset="50" data-spy="scroll" data-target=".navbar-collapse" id="top">
+    <div class="preloader">
+        <div class="sk-spinner sk-spinner-pulse"></div>
+    </div>
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand smoothScroll" href="#top">
+                    <img alt="LokaLaku Logo Header" loading="lazy" src="images/logo-header.webp" style="height: 40px;"/>
+                </a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a class="smoothScroll" href="#top"><span>Home</span></a></li>
+                    <li><a class="smoothScroll" href="#about"><span>About</span></a></li>
+                    <li><a class="smoothScroll" href="#why"><span>Why Us</span></a></li>
+                    <li><a class="smoothScroll" href="#destination"><span>Packages</span></a></li>
+                    <li><a class="smoothScroll" href="#contact"><span>Contact</span></a></li>
+                    <li class="language-switch" aria-label="Language selector"><button class="lang-btn active" type="button" data-lang="en">EN</button><button class="lang-btn" type="button" data-lang="id">ID</button></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="home">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-1 col-md-10 col-sm-12 wow fadeInUp" data-wow-delay="0.3s">
+                    <h1 class="wow fadeInUp" data-wow-delay="0.6s">Where Every Journey Finds Its Soul</h1>
+                    <p class="wow fadeInUp" data-wow-delay="0.9s">
+                        <a href="https://www.instagram.com/lokalaku_trip/" rel="nofollow">LokaLaku</a> curates nature trips, cultural routes, and city explorations across Indonesia. From sunrise at Bromo to slow days in Yogyakarta and Bali, every journey is planned with local care, clear communication, and room for real stories.
+                    </p>
+                    <div class="hero-actions wow fadeInUp" data-wow-delay="1.2s">
+                        <a class="smoothScroll btn btn-success btn-lg" href="#destination">Explore Packages</a>
+                        <a class="btn btn-outline-light btn-lg" href="https://wa.me/6281331421031?text=Hi%20LokaLaku%20Trip%2C%20I%27d%20like%20to%20plan%20a%20trip." rel="noopener noreferrer" target="_blank"><i class="fa-brands fa-whatsapp"></i> Plan via WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="quick-info" aria-label="LokaLaku trip highlights">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4 quick-info-item wow fadeInUp" data-wow-delay="0.1s">
+                    <svg class="trust-icon" viewBox="0 0 64 64" aria-hidden="true"><path d="M14 12l14-5 18 5 4-2v42l-14 5-18-5-4 2V12zm14 1v34l8 3V16l-8-3zm15 6c0 8-9 17-9 17s-9-9-9-17a9 9 0 1118 0zm-9 4a4 4 0 100-8 4 4 0 000 8z"/></svg>
+                    <strong>8+ Curated Routes</strong>
+                    <span>Bali, Bromo, Ijen, Dieng, Yogyakarta, Malang, Baluran, and Banyuwangi.</span>
+                </div>
+                <div class="col-sm-4 quick-info-item wow fadeInUp" data-wow-delay="0.2s">
+                    <svg class="trust-icon" viewBox="0 0 64 64" aria-hidden="true"><path d="M14 37l5-13c2-5 5-7 10-7h12c5 0 8 2 10 7l5 13v11h-6a7 7 0 01-14 0H28a7 7 0 01-14 0H8V37h6zm9-2h26l-4-9c-1-2-2-3-5-3H30c-3 0-4 1-5 3l-2 9zm-2 16a3 3 0 100-6 3 3 0 000 6zm30 0a3 3 0 100-6 3 3 0 000 6z"/></svg>
+                    <strong>Private &amp; Open Trips</strong>
+                    <span>Flexible options for families, friends, solo travelers, and international guests.</span>
+                </div>
+                <div class="col-sm-4 quick-info-item wow fadeInUp" data-wow-delay="0.3s">
+                    <svg class="trust-icon" viewBox="0 0 64 64" aria-hidden="true"><path d="M32 8a22 22 0 00-22 22v13a7 7 0 007 7h5V31H16v-1a16 16 0 0132 0v1h-6v19h5c-2 5-7 6-15 6v-6h-8v10h7c15 0 23-6 23-18V30A22 22 0 0032 8z"/></svg>
+                    <strong>Easy Consultation</strong>
+                    <span>Ask routes, dates, pickup points, and custom plans directly through WhatsApp.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+	<section id="about">
     <div class="container">
-
-      <div class="navbar-header">
-        <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-          <span class="icon icon-bar"></span>
-          <span class="icon icon-bar"></span>
-          <span class="icon icon-bar"></span>
-        </button>
-	      
-	<a href="#top" class="navbar-brand smoothScroll">
-  		<img src="images/logo.png" alt="LokaLaku" style="height: 44px;">
-	</a>
-
-      </div>
-        <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="#top" class="smoothScroll"><span>Home</span></a></li>
-            <li><a href="#about" class="smoothScroll"><span>About</span></a></li>
-            <li><a href="#gallery" class="smoothScroll"><span>Gallery</span></a></li>
-            <li><a href="#contact" class="smoothScroll"><span>Contact</span></a></li>
-          </ul>
-       </div>
-
+        <div class="row">
+            <div class="col-md-9 col-sm-8 wow fadeInUp" data-wow-delay="0.2s">
+                <div class="about-thumb">
+                    <h1 class="text-primary" style="color: #e35636;">LokaLaku Philosophy</h1>
+                    <p><a href="https://www.instagram.com/lokalaku_trip/" target="_blank" rel="noopener noreferrer"><strong>LokaLaku</strong></a> embodies the spirit of exploration and discovery. Its name combines the <strong>Sanskrit word "Loka," meaning world or place, and the Javanese "Laku," meaning journey or action</strong>. Together, these names <em>reflect the idea of actively exploring the world, embracing new experiences, and connecting with the beauty, culture, and diversity of each destination.</em></p>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-4 wow fadeInUp about-img" data-wow-delay="0.6s" style="margin-top: 60px;">
+                <img alt="Tim LokaLaku Trip" class="img-responsive img-circle" loading="lazy" src="images/about-img.webp"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="section-title text-center">
+                    <h1 class="text-primary" style="color: #e35636;">LokaLaku Team!</h1>
+                    <h3>Behind every amazing trip is a team that loves what they do. From tour leaders who know the quiet corners to customer service support ready for every change of plan, we keep your adventure safe, smooth, and full of good energy.</h3>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="owl-carousel" id="team-carousel">
+                <div class="item wow fadeInUp" data-wow-delay="0.4s">
+                    <div class="team-thumb">
+                        <div class="image-holder">
+                            <img alt="Foto tim LokaLaku Ardian Kustomo" class="img-responsive img-circle" loading="lazy" src="images/team-img1.webp"/>
+                        </div>
+                        <h2 class="heading">Ardian Kustomo</h2>
+                        <p class="description">Comedian Traveler, he is part of LokaLaku marketing here</p>
+                        <div class="team-social-icons">
+                            <a href="https://www.instagram.com/artdian_kustomo" target="_blank"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.facebook.com/share/1EnG8MtCfU/" target="_blank"><i class="fab fa-facebook"></i></a>
+                            <a href="https://www.tiktok.com/@sekilasmantan" target="_blank"><i class="fab fa-tiktok"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item wow fadeInUp" data-wow-delay="0.6s">
+                    <div class="team-thumb">
+                        <div class="image-holder">
+                            <img alt="Foto tim LokaLaku Tomy Kustomo" class="img-responsive img-circle" loading="lazy" src="images/team-img2.webp"/>
+                        </div>
+                        <h2 class="heading">Tomy Kustomo</h2>
+                        <p class="description">Friendly tour guide who smiles at customers</p>
+                         <div class="team-social-icons">
+                            <a href="https://www.instagram.com/tomy_kustomo" target="_blank"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.facebook.com/share/1CU52WdMkc/" target="_blank"><i class="fab fa-facebook"></i></a>
+                            <a href="https://www.tiktok.com/@tomykustomo" target="_blank"><i class="fab fa-tiktok"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item wow fadeInUp" data-wow-delay="0.8s">
+                    <div class="team-thumb">
+                        <div class="image-holder">
+                            <img alt="Foto tim LokaLaku Guest Gesang" class="img-responsive img-circle" loading="lazy" src="images/team-img3.webp"/>
+                        </div>
+                        <h2 class="heading">Guest Gesang</h2>
+                        <p class="description">Who patiently documents the customer journey</p>
+                         <div class="team-social-icons">
+                            <a href="https://www.instagram.com/guestgesang" target="_blank"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.facebook.com/share/19cmGV35q8/" target="_blank"><i class="fab fa-facebook"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item wow fadeInUp" data-wow-delay="0.8s">
+                    <div class="team-thumb">
+                        <div class="image-holder">
+                            <img alt="Foto tim LokaLaku Angga Wijanarko" class="img-responsive img-circle" loading="lazy" src="images/team-img4.webp"/>
+                        </div>
+                        <h2 class="heading">Angga Wijanarko</h2>
+                        <p class="description">A designer who also loves to travel the world</p>
+                         <div class="team-social-icons">
+                            <a href="https://www.facebook.com/share/17RRt419uU/" target="_blank"><i class="fab fa-facebook"></i></a>
+                            <a href="https://www.tiktok.com/@artcow.pubg" target="_blank"><i class="fab fa-tiktok"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item wow fadeInUp" data-wow-delay="0.8s">
+                    <div class="team-thumb">
+                        <div class="image-holder">
+                            <img alt="Foto tim LokaLaku Vivin Ramdhania" class="img-responsive img-circle" loading="lazy" src="images/team-img5.webp"/>
+                        </div>
+                        <h2 class="heading">Vivin Ramdhania</h2>
+                        <p class="description">This female tour guide is a bit shy so be careful</p>
+                         <div class="team-social-icons">
+                            <a href="https://www.facebook.com/share/16nfH2pER9/" target="_blank"><i class="fab fa-facebook"></i></a>
+                            <a href="https://www.tiktok.com/@vivin.ramdania" target="_blank"><i class="fab fa-tiktok"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item wow fadeInUp" data-wow-delay="0.8s">
+                    <div class="team-thumb">
+                        <div class="image-holder">
+                            <img alt="Foto tim LokaLaku Reny Gesang" class="img-responsive img-circle" loading="lazy" src="images/team-img6.webp"/>
+                        </div>
+                        <h2 class="heading">Reny Gesang</h2>
+                        <p class="description">This is the boss, the calm but scary girl</p>
+                         <div class="team-social-icons">
+                            <a href="https://www.instagram.com/rere_mickey" target="_blank"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.facebook.com/share/1NDAbCKixg/" target="_blank"><i class="fab fa-facebook"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-
-
-<!-- Home section -->
-
-<section id="home">
-  <div class="overlay"></div>
-  <div class="container">
-    <div class="row">
-
-      <div class="col-md-offset-1 col-md-10 col-sm-12 wow fadeInUp" data-wow-delay="0.3s">
-        <h1 class="wow fadeInUp" data-wow-delay="0.6s">Where Every Journey Finds Its Soul</h1>
-        <p class="wow fadeInUp" data-wow-delay="0.9s"><a rel="nofollow" href="https://www.instagram.com/lokalaku_trip/">LokaLaku</a> is a travel service that offers meaningful and soulful journeys across Indonesia.
-		We specialize in curated nature tours, cultural experiences, and city explorations — especially in Yogyakarta, Malang, and Bali.
-		Whether you're a global traveler seeking hidden gems, or a family looking for joyful getaways, <a rel="nofollow" href="https://www.instagram.com/lokalaku_trip/">LokaLaku</a> walks with you every step of the way.</p>
-	      <p>For more information </p> <a href="https://wa.me/6281331421031" class="smoothScroll btn btn-success btn-lg wow fadeInUp" data-wow-delay="1.2s">Click me.</a>
-      </div>
-
-    </div>
-  </div>
 </section>
-
-
-<!-- About section -->
-
-<section id="about">
-  <div class="container">
-    <div class="row">
-
-      <div class="col-md-9 col-sm-8 wow fadeInUp" data-wow-delay="0.2s">
-        <div class="about-thumb">
-          <h1>Open Trip & Tour!</h1>
-          <p>We’re excited to have you on board. Let us take you on a journey to Indonesia’s most stunning destinations, with well-planned itineraries and friendly service. Your adventure begins here.</p>
+    <section id="why">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-2 col-md-8 col-sm-12 text-center wow fadeInUp" data-wow-delay="0.2s">
+                    <div class="section-title">
+                        <h1 class="text-primary" style="color: #e35636;"><strong>Why Travel With LokaLaku?</strong></h1>
+                        <p>We keep the trip personal, practical, and connected to local places, so your time on the road feels effortless without losing its sense of discovery.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row why-grid">
+                <div class="col-md-3 col-sm-6 wow fadeInUp" data-wow-delay="0.2s">
+                    <div class="why-card">
+                        <i class="fa-solid fa-route" aria-hidden="true"></i>
+                        <h2>Flexible Routes</h2>
+                        <p>Choose a ready package or ask us to adjust timing, pickup, and stops around your travel style.</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="why-card">
+                        <i class="fa-solid fa-user-shield" aria-hidden="true"></i>
+                        <h2>Trusted Crew</h2>
+                        <p>Local drivers and trip leaders help with routes, tickets, timing, and practical travel details.</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 wow fadeInUp" data-wow-delay="0.4s">
+                    <div class="why-card">
+                        <i class="fa-solid fa-comments" aria-hidden="true"></i>
+                        <h2>Clear Updates</h2>
+                        <p>Before the trip starts, you can confirm itinerary, meeting point, inclusions, and special requests.</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="why-card">
+                        <svg class="trust-icon" viewBox="0 0 64 64" aria-hidden="true"><path d="M18 18h9l3-5h12l3 5h7a6 6 0 016 6v24a6 6 0 01-6 6H12a6 6 0 01-6-6V24a6 6 0 016-6h6zm14 29a12 12 0 100-24 12 12 0 000 24zm0-6a6 6 0 110-12 6 6 0 010 12zm17-15a3 3 0 100-6 3 3 0 000 6z"/></svg>
+                        <h2>Real Moments</h2>
+                        <p>Balanced itineraries leave space for views, food, photos, and the small moments that make a trip stay with you.</p>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
+    </section>
+    <section id="destination">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-2 col-md-8 col-sm-12 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="section-title text-center">
+                        <h1 class="text-white" style="color: #e35636;"><strong>Travel Packages</strong></h1>
+                        <p class="text-white"style="color: white;">Explore the best tourist destinations in Malang, Yogyakarta, and Bali. Which one will be your next adventure?</p>
+						<div class="video-container">
+							<iframe 
+								width="560" 
+								height="315" 
+								src="https://www.youtube.com/embed/cuE7a3_B9yY?&autoplay=1&mute=1&loop=1&playlist=cuE7a3_B9yY" 
+								title="YouTube video player" 
+								frameborder="0" 
+								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+								referrerpolicy="strict-origin-when-cross-origin" 
+                            allowfullscreen>
+							</iframe>
+						</div>
 
-      <div class="col-md-3 col-sm-4 wow fadeInUp about-img" data-wow-delay="0.6s">
-        <img src="images/about-img.jpg" class="img-responsive img-circle" alt="About">
-      </div>
-
-      <div class="clearfix"></div>
-
-      <div class="col-md-12 col-sm-12 wow fadeInUp" data-wow-delay="0.3s">
-        <div class="section-title text-center">
-          <h1>LokaLaku Team</h1>
-          <h3>Behind every unforgettable journey is a passionate team. From experienced tour leaders to friendly customer service, our dedicated team works hand-in-hand to provide you with safe, enjoyable, and memorable travel experiences. Your comfort and happiness are our top priorities.</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <ul class="grid cs-style-4">
+                    <li class="col-md-6 col-sm-6">
+                        <figure>
+                            <div><img alt="Destinasi Wisata Bali" loading="lazy" src="images/bali-tourism.webp"/></div>
+                            <figcaption>
+                                <h1>Bali Tourism</h1>
+                                <h2 class="package-price-label">Start from:</h2>
+                                <h2 class="lang-price" data-price-en="$190.32" data-price-id="Rp 2.950.000">$190.32</h2>
+                                <small class="package-small">Click to read detailed itinerary and book your tour now!</small>
+                                <a class="package-read-more" href="javascript:void(0);" onclick="openModal('modal-bali-tourism', 0)">Read More</a>
+                            </figcaption>
+                        </figure>
+                    </li>
+                    <li class="col-md-6 col-sm-6">
+                        <figure>
+                            <div><img alt="Destinasi Wisata Bromo Ijen" loading="lazy" src="images/bromo-ijen-tour.webp"/></div>
+                            <figcaption>
+                                <h1>Bromo &ndash; Ijen Tour</h1>
+                                <h2 class="package-price-label">Start from:</h2>
+                                <h2 class="lang-price" data-price-en="$112.90" data-price-id="Rp 1.750.000">$112.90</h2>
+                                <small class="package-small">Click to read detailed itinerary and book your tour now!</small>
+                                <a class="package-read-more" href="javascript:void(0);" onclick="openModal('modal-bromo-ijen-tour', 1)">Read More</a>
+                            </figcaption>
+                        </figure>
+                    </li>
+                    <li class="col-md-6 col-sm-6">
+                        <figure>
+                            <div><img alt="Destinasi Wisata Dieng Bromo Jogja Merapi" loading="lazy" src="images/dieng-bromo-jogja-merapi.webp"/></div>
+                            <figcaption>
+                                <h1>Dieng &ndash; Bromo &ndash; Jogja &ndash; Merapi</h1>
+                                <h2 class="package-price-label">Start from:</h2>
+                                <h2 class="lang-price" data-price-en="$220.65" data-price-id="Rp 3.420.000">$220.65</h2>
+                                <small class="package-small">Click to read detailed itinerary and book your tour now!</small>
+                                <a class="package-read-more" href="javascript:void(0);" onclick="openModal('modal-dieng-bromo-jogja-merapi', 2)">Read More</a>
+                            </figcaption>
+                        </figure>
+                    </li>
+                    <li class="col-md-6 col-sm-6">
+                        <figure>
+                            <div><img alt="Destinasi Wisata Malang Jogja Explore" loading="lazy" src="images/malang-jogja-explore.webp"/></div>
+                            <figcaption>
+                                <h1>Malang to Jogja Explore</h1>
+                                <h2 class="package-price-label">Start from:</h2>
+                                <h2 class="lang-price" data-price-en="$151.61" data-price-id="Rp 2.350.000">$151.61</h2>
+                                <small class="package-small">Click to read detailed itinerary and book your tour now!</small>
+                                <a class="package-read-more" href="javascript:void(0);" onclick="openModal('modal-malang-to-jogja-explore', 3)">Read More</a>
+                            </figcaption>
+                        </figure>
+                    </li>
+                    <li class="col-md-6 col-sm-6">
+                        <figure>
+                            <div><img alt="Destinasi Wisata Malang City Tour" loading="lazy" src="images/malang-city-tour.webp"/></div>
+                            <figcaption>
+                                <h1>Malang City Tour</h1>
+                                <h2 class="package-price-label">Start from:</h2>
+                                <h2 class="lang-price" data-price-en="$41.94" data-price-id="Rp 650.000">$41.94</h2>
+                                <small class="package-small">Click to read detailed itinerary and book your tour now!</small>
+                                <a class="package-read-more" href="javascript:void(0);" onclick="openModal('modal-malang-city-tour', 4)">Read More</a>
+                            </figcaption>
+                        </figure>
+                    </li>
+                    <li class="col-md-6 col-sm-6">
+                        <figure>
+                            <div><img alt="Destinasi Wisata Sikidang Explore" loading="lazy" src="images/sikidang-explore.webp"/></div>
+                            <figcaption>
+                                <h1>Sikidang Explore</h1>
+                                <h2 class="package-price-label">Start from:</h2>
+                                <h2 class="lang-price" data-price-en="$38.06" data-price-id="Rp 590.000">$38.06</h2>
+                                <small class="package-small">Click to read detailed itinerary and book your tour now!</small>
+                                <a class="package-read-more" href="javascript:void(0);" onclick="openModal('modal-sikidang-explore', 5)">Read More</a>
+                            </figcaption>
+                        </figure>
+                    </li>
+                    <li class="col-md-6 col-sm-6">
+                        <figure>
+                            <div><img alt="Destinasi Wisata Yogyakarta Explore" loading="lazy" src="images/yogyakarta-explore.webp"/></div>
+                            <figcaption>
+                                <h1>Yogyakarta Explore</h1>
+                                <h2 class="package-price-label">Start from:</h2>
+                                <h2 class="lang-price" data-price-en="$138.71" data-price-id="Rp 2.150.000">$138.71</h2>
+                                <small class="package-small">Click to read detailed itinerary and book your tour now!</small>
+                                <a class="package-read-more" href="javascript:void(0);" onclick="openModal('modal-yogyakarta-explore', 6)">Read More</a>
+                            </figcaption>
+                        </figure>
+                    </li>
+                    <li class="col-md-6 col-sm-6">
+                        <figure>
+                            <div><img alt="Destinasi Wisata Baluran Banyuwangi" loading="lazy" src="images/baluran-banyuwangi-explore.webp"/></div>
+                            <figcaption>
+                                <h1>Baluran &ndash; Banyuwangi Explore</h1>
+                                <h2 class="package-price-label">Start from:</h2>
+                                <h2 class="lang-price" data-price-en="$151.61" data-price-id="Rp 2.350.000">$151.61</h2>
+                                <small class="package-small">Click to read detailed itinerary and book your tour now!</small>
+                                <a class="package-read-more" href="javascript:void(0);" onclick="openModal('modal-baluran-banyuwangi-explore', 7)">Read More</a>
+                            </figcaption>
+                        </figure>
+                    </li>
+                </ul>
+            </div>
         </div>
-      </div>
-
-      <!-- team carousel -->
-      <div id="team-carousel" class="owl-carousel">
-
-      <div class="item col-md-4 col-sm-6 wow fadeInUp" data-wow-delay="0.4s">
-        <div class="team-thumb">
-          <div class="image-holder">
-            <img src="images/team-img1.jpg" class="img-responsive img-circle" alt="Sanji">
-          </div>
-          <h2 class="heading">Sanji</h2>
-          <p class="description">A young man with a thin but muscular body, long legs and blond hair.</p>
+    </section>
+    <section id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-1 col-md-10 col-sm-12">
+                    <div class="col-lg-offset-1 col-lg-10 section-title wow fadeInUp" data-wow-delay="0.4s">
+                        <h1 class="text-primary" style="color: #e35636;"><strong>Send a Message</strong></h1>
+                        <p>Want to explore these amazing spots? Drop us a message and snag awesome deals on every destination!</p>
+                    </div>
+                    <form action="https://formspree.io/f/mldlpwzr" class="wow fadeInUp" data-wow-delay="0.8s" method="POST">
+                        <div class="col-md-6 col-sm-6 form-group">
+                            <label class="sr-only" for="name">Your Name</label>
+                            <input class="form-control" id="name" name="name" placeholder="Your Name" required type="text"/>
+                        </div>
+                        <div class="col-md-6 col-sm-6 form-group">
+                            <label class="sr-only" for="email">Your Email</label>
+                            <input class="form-control" id="email" name="email" placeholder="Your Email" required type="email"/>
+                        </div>
+                        <div class="col-md-12 col-sm-12 form-group">
+                            <label class="sr-only" for="message">Your Message</label>
+                            <textarea class="form-control" id="message" name="message" placeholder="Your Message" required rows="6"></textarea>
+                        </div>
+                        <input name="_gotcha" style="display:none" type="text"/>
+                        <input name="_redirect" type="hidden" value="https://lokalaku.vercel.app/thank-you.html"/>
+                        <div class="col-md-offset-3 col-md-6 col-sm-offset-3 col-sm-6">
+                            <button class="form-control btn btn-primary" type="submit">Send Message</button>
+                        </div>
+                    </form>
+                    <div class="col-md-offset-3 col-md-6 col-sm-offset-3 col-sm-6 text-center wow fadeInUp" data-wow-delay="1s" style="margin-top: 20px;">
+                        <a class="btn btn-success btn-lg" href="https://wa.me/6281331421031?text=Hi%20LokaLaku%20Trip%2C%20I%27m%20interested%20in%20your%20tour%20packages!" rel="noopener noreferrer" style="width: 100%; font-size: 18px;" target="_blank">
+                            <i class="fa-brands fa-whatsapp"></i> Contact via WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-
-      <div class="item col-md-4 col-sm-6 wow fadeInUp" data-wow-delay="0.6s">
-        <div class="team-thumb">
-          <div class="image-holder">
-            <img src="images/team-img2.jpg" class="img-responsive img-circle" alt="Franky">
-          </div>
-          <h2 class="heading">Franky</h2>
-          <p class="description">Cyborg with a large and muscular body.</p>
+    </section>
+    <section class="trust-strip" aria-label="LokaLaku trip values">
+        <div class="container">
+            <div class="trust-strip-grid">
+                <div class="trust-mark"><svg class="trust-icon" viewBox="0 0 64 64" aria-hidden="true"><path d="M8 50h48L40 24 29 40l-6-9L8 50zM46 12l3 7 7 3-7 3-3 7-3-7-7-3 7-3 3-7z"/></svg><span class="trust-label">Nature Routes</span></div>
+                <div class="trust-mark"><svg class="trust-icon" viewBox="0 0 64 64" aria-hidden="true"><path d="M14 12l14-5 18 5 4-2v42l-14 5-18-5-4 2V12zm14 1v34l8 3V16l-8-3zm15 6c0 8-9 17-9 17s-9-9-9-17a9 9 0 1118 0zm-9 4a4 4 0 100-8 4 4 0 000 8z"/></svg><span class="trust-label">Local Guides</span></div>
+                <div class="trust-mark"><svg class="trust-icon" viewBox="0 0 64 64" aria-hidden="true"><path d="M14 37l5-13c2-5 5-7 10-7h12c5 0 8 2 10 7l5 13v11h-6a7 7 0 01-14 0H28a7 7 0 01-14 0H8V37h6zm9-2h26l-4-9c-1-2-2-3-5-3H30c-3 0-4 1-5 3l-2 9zm-2 16a3 3 0 100-6 3 3 0 000 6zm30 0a3 3 0 100-6 3 3 0 000 6z"/></svg><span class="trust-label">Private Trips</span></div>
+                <div class="trust-mark"><svg class="trust-icon" viewBox="0 0 64 64" aria-hidden="true"><path d="M10 22a6 6 0 006-6h32a6 6 0 006 6v20a6 6 0 00-6 6H16a6 6 0 00-6-6V22zm14 4h16v5H24v-5zm0 10h22v5H24v-5z"/></svg><span class="trust-label">Clear Inclusions</span></div>
+                <div class="trust-mark"><svg class="trust-icon" viewBox="0 0 64 64" aria-hidden="true"><path d="M32 8a22 22 0 00-22 22v13a7 7 0 007 7h5V31H16v-1a16 16 0 0132 0v1h-6v19h5c-2 5-7 6-15 6v-6h-8v10h7c15 0 23-6 23-18V30A22 22 0 0032 8z"/></svg><span class="trust-label">Trip Support</span></div>
+                <div class="trust-mark"><svg class="trust-icon" viewBox="0 0 64 64" aria-hidden="true"><path d="M18 18h9l3-5h12l3 5h7a6 6 0 016 6v24a6 6 0 01-6 6H12a6 6 0 01-6-6V24a6 6 0 016-6h6zm14 29a12 12 0 100-24 12 12 0 000 24zm0-6a6 6 0 110-12 6 6 0 010 12zm17-15a3 3 0 100-6 3 3 0 000 6z"/></svg><span class="trust-label">Real Moments</span></div>
+            </div>
         </div>
-      </div>
-
-      <div class="item col-md-4 col-sm-6 wow fadeInUp" data-wow-delay="0.8s">
-        <div class="team-thumb">
-          <div class="image-holder">
-            <img src="images/team-img3.jpg" class="img-responsive img-circle" alt="Usopp">
-          </div>
-          <h2 class="heading">Usopp</h2>
-          <p class="description">Sniper of the Straw Hat Pirates.</p>
+    </section>
+    <footer class="site-footer">
+        <div class="footer-main">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-sm-12 footer-brand">
+                        <img alt="LokaLaku Trip" loading="lazy" src="images/logo-header.webp"/>
+                        <p class="footer-brand-text">Curated private tours and open trips across Indonesia, shaped with local care and clear communication.</p>
+                    </div>
+                    <div class="col-md-2 col-sm-4 footer-column">
+                        <h2 class="footer-heading footer-about-heading">About Us</h2>
+                        <ul>
+                            <li><a class="smoothScroll footer-link-about" href="#about">Our Story</a></li>
+                            <li><a class="smoothScroll footer-link-team" href="#about">Our Team</a></li>
+                            <li><a class="smoothScroll footer-link-why" href="#why">Why LokaLaku</a></li>
+                            <li><a class="smoothScroll footer-link-contact" href="#contact">Contact Us</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3 col-sm-4 footer-column">
+                        <h2 class="footer-heading footer-packages-heading">Packages</h2>
+                        <ul>
+                            <li><a class="smoothScroll" href="#destination">Bali Tourism</a></li>
+                            <li><a class="smoothScroll" href="#destination">Bromo &amp; Ijen Tour</a></li>
+                            <li><a class="smoothScroll" href="#destination">Dieng, Bromo, Jogja &amp; Merapi</a></li>
+                            <li><a class="smoothScroll" href="#destination">Malang to Jogja Explore</a></li>
+                            <li><a class="smoothScroll" href="#destination">Yogyakarta Explore</a></li>
+                            <li><a class="smoothScroll" href="#destination">Baluran &amp; Banyuwangi Explore</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3 col-sm-4 footer-column footer-connect">
+                        <h2 class="footer-heading footer-newsletter-heading">Subscribe</h2>
+                        <p class="footer-newsletter-text">Get LokaLaku trip updates and seasonal route ideas.</p>
+                        <form action="https://formspree.io/f/mldlpwzr" class="footer-newsletter" method="POST">
+                            <input name="footer_email" placeholder="your@email.com" required type="email"/>
+                            <button aria-label="Subscribe" type="submit"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
+                            <input name="source" type="hidden" value="footer newsletter"/>
+                        </form>
+                        <h2 class="footer-heading footer-contact-heading">Contact Us</h2>
+                        <p class="footer-contact-line"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> <a href="https://wa.me/6281331421031" target="_blank" rel="noopener noreferrer">+62 813-3142-1031</a></p>
+                        <p class="footer-contact-line"><i class="fa-brands fa-instagram" aria-hidden="true"></i> <a href="https://www.instagram.com/lokalaku_trip/" target="_blank" rel="noopener noreferrer">@lokalaku_trip</a></p>
+                        <h2 class="footer-heading footer-follow-heading">Follow Us</h2>
+                        <ul class="social-icon footer-social">
+                            <li><a class="fa-brands fa-facebook" href="http://facebook.com/" target="_blank" rel="noopener noreferrer"></a></li>
+                            <li><a class="fa-brands fa-x-twitter" href="https://x.com/" target="_blank" rel="noopener noreferrer"></a></li>
+                            <li><a class="fa-brands fa-whatsapp" href="https://wa.me/6281331421031" target="_blank" rel="noopener noreferrer"></a></li>
+                            <li><a class="fa-brands fa-instagram" href="https://www.instagram.com/lokalaku_trip/" target="_blank" rel="noopener noreferrer"></a></li>
+                            <li><a class="fa-brands fa-tiktok" href="https://www.tiktok.com/explore" target="_blank" rel="noopener noreferrer"></a></li>
+                            <li><a class="fa-brands fa-youtube" href="https://www.youtube.com/@YourChannel" target="_blank" rel="noopener noreferrer"></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-
-      <div class="item col-md-4 col-sm-6 wow fadeInUp" data-wow-delay="0.8s">
-        <div class="team-thumb">
-          <div class="image-holder">
-            <img src="images/team-img4.jpg" class="img-responsive img-circle" alt="Chopper">
-          </div>
-          <h2 class="heading">Tony Tony Chopper</h2>
-          <p class="description">The doctor of the Straw Hat Pirates.</p>
+        <div class="footer-bottom">
+            <div class="container">
+                <p class="footer-copyright">&copy; 2026 LokaLaku Trip. All rights reserved.</p>
+                <ul class="footer-legal">
+                    <li><a class="footer-legal-privacy" href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a class="footer-legal-terms" href="terms-conditions.html">Terms &amp; Conditions</a></li>
+                    <li><a class="footer-legal-booking" href="booking-help.html">Booking Help</a></li>
+                </ul>
+            </div>
         </div>
-      </div>
+    </footer>
+    <a class="go-top" href="#"><i class="fa fa-angle-up"></i></a>
 
-      <div class="item col-md-4 col-sm-6 wow fadeInUp" data-wow-delay="0.8s">
-        <div class="team-thumb">
-          <div class="image-holder">
-            <img src="images/team-img5.jpg" class="img-responsive img-circle" alt="Robin">
-          </div>
-          <h2 class="heading">Nico Robin</h2>
-          <p class="description">The archaeologist of the Straw Hat Pirates.</p>
+    <div class="custom-modal" id="modal-bali-tourism">
+        <div class="custom-modal-content">
+            <span class="custom-modal-close" onclick="closeModal('modal-bali-tourism')">&times;</span>
+            <div class="custom-slideshow">
+                <div class="slides-wrapper">
+                    <div class="slide"><img alt="Destinasi Bali" src="images/bali-tourism.webp"/></div>
+                    <div class="slide"><img alt="Destinasi Bromo Ijen" src="images/bromo-ijen-tour.webp"/></div>
+                    <div class="slide"><img alt="Destinasi Dieng Bromo Jogja" src="images/dieng-bromo-jogja-merapi.webp"/></div>
+                    <div class="slide"><img alt="Destinasi Malang Jogja" src="images/malang-jogja-explore.webp"/></div>
+                    <div class="slide"><img alt="Destinasi Malang City Tour" src="images/malang-city-tour.webp"/></div>
+                    <div class="slide"><img alt="Destinasi Kawah Sikidang" src="images/sikidang-explore.webp"/></div>
+                    <div class="slide"><img alt="Destinasi Yogyakarta" src="images/yogyakarta-explore.webp"/></div>
+                    <div class="slide"><img alt="Destinasi Baluran Banyuwangi" src="images/baluran-banyuwangi-explore.webp"/></div>
+                </div>
+                <div class="slideshow-dots"></div>
+            </div>
+            <h1 class="text-center text-secondary">Bali Tourism</h1>
+            <h2 class="text-center"><span class="price-label">Start from:</span> <span class="lang-price" data-price-en="$190.32" data-price-id="Rp 2.950.000">$190.32</span></h2>
+            <div class="modal-list-wrapper">
+                <ul>
+                    <li>Private transport (AC car + driver + fuel)</li>
+                    <li>2 nights at 3-star hotel</li>
+                    <li>Entrance tickets to all attractions</li>
+                    <li>Daily Breakfast</li>
+                    <li>Free parking &amp; tolls</li>
+                    <li>Meeting point: Bali Airport / Hotel</li>
+                </ul>
+            </div>
+            <a class="wa-button btn btn-success" href="https://wa.me/6281331421031?text=Hi%2C%20I'm%20interested%20in%20booking%20the%20Bali%20Tourism%20package." target="_blank"><i class="fa-brands fa-whatsapp"></i> Book via WhatsApp</a>
         </div>
-      </div>
-
-      <div class="item col-md-4 col-sm-6 wow fadeInUp" data-wow-delay="0.8s">
-        <div class="team-thumb">
-          <div class="image-holder">
-            <img src="images/team-img6.jpg" class="img-responsive img-circle" alt="Zoro">
-          </div>
-          <h2 class="heading">Roronoa Zoro</h2>
-          <p class="description">The main fighter of the Straw Hat Pirates, one of their two swordsmen.</p>
-        </div>
-      </div>
-
-      <div class="item col-md-4 col-sm-6 wow fadeInUp" data-wow-delay="0.8s">
-        <div class="team-thumb">
-          <div class="image-holder">
-            <img src="images/team-img7.jpg" class="img-responsive img-circle" alt="Nami ">
-          </div>
-          <h2 class="heading">Nami</h2>
-          <p class="description">The Cat Thief is a pirate and navigator.</p>
-        </div>
-      </div>
-
-      <div class="item col-md-4 col-sm-6 wow fadeInUp" data-wow-delay="0.8s">
-        <div class="team-thumb">
-          <div class="image-holder">
-            <img src="images/team-img8.jpg" class="img-responsive img-circle" alt="Luffy">
-          </div>
-          <h2 class="heading">Monkey D. Luffy</h2>
-          <p class="description">Founder and captain of Straw Hat Pirates.</p>
-        </div>
-      </div>
-
-      </div>
-      <!-- end team carousel -->
-
     </div>
-  </div>
-</section>
-
-
-<!-- Destination section -->
-
-<section id="destination">
-  <div class="container">
-    <div class="row">
-
-      <div class="col-md-offset-2 col-md-8 col-sm-12 wow fadeInUp" data-wow-delay="0.3s">
-        <div class="section-title">
-          <h1>Destination</h1>
-          <p>Explore the best tourist destinations in Malang, Yogyakarta, and Bali. Which one will be your next adventure?</p>
+    <div class="custom-modal" id="modal-bromo-ijen-tour">
+        <div class="custom-modal-content">
+            <span class="custom-modal-close" onclick="closeModal('modal-bromo-ijen-tour')">&times;</span>
+            <div class="custom-slideshow">
+                <div class="slides-wrapper">
+                    <div class="slide"><img alt="Destinasi Bali" src="images/bali-tourism.webp"/></div>
+                    <div class="slide"><img alt="Destinasi Bromo Ijen" src="images/bromo-ijen-tour.webp"/></div>
+                    <div class="slide"><img alt="Destinasi Dieng Bromo Jogja" src="images/dieng-bromo-jogja-merapi.webp"/></div>
+                    <div class="slide"><img alt="Destinasi Malang Jogja" src="images/malang-jogja-explore.webp"/></div>
+                    <div class="slide"><img alt="Destinasi Malang City Tour" src="images/malang-city-tour.webp"/></div>
+                    <div class="slide"><img alt="Destinasi Kawah Sikidang" src="images/sikidang-explore.webp"/></div>
+                    <div class="slide"><img alt="Destinasi Yogyakarta" src="images/yogyakarta-explore.webp"/></div>
+                    <div class="slide"><img alt="Destinasi Baluran Banyuwangi" src="images/baluran-banyuwangi-explore.webp"/></div>
+                </div>
+                <div class="slideshow-dots"></div>
+            </div>
+            <h1 class="text-center text-secondary">Bromo &ndash; Ijen Tour</h1>
+            <h2 class="text-center"><span class="price-label">Start from:</span> <span class="lang-price" data-price-en="$112.90" data-price-id="Rp 1.750.000">$112.90</span></h2>
+            <div class="modal-list-wrapper">
+                <ul>
+                    <li>Shuttle Transport & Jeep Bromo</li>
+                    <li>1 night stay near Bromo/Ijen</li>
+                    <li>All entrance tickets</li>
+                    <li>Local Guide</li>
+                    <li>Gas Mask for Ijen</li>
+                    <li>Meeting point: Malang/Banyuwangi</li>
+                </ul>
+            </div>
+            <a class="wa-button btn btn-success" href="https://wa.me/6281331421031?text=Hi%2C%20I'm%20interested%20in%20booking%20the%20Bromo-Ijen%20Tour%20package." target="_blank"><i class="fa-brands fa-whatsapp"></i> Book via WhatsApp</a>
         </div>
-      </div>
-
-      <ul class="grid cs-style-4">
-        <li class="col-md-6 col-sm-6">
-          <figure>
-            <div><img src="images/gallery-img1.jpg" alt="Sikidang Crater - Dieng Plateau"></div>
-            <figcaption>
-              <h1>Sikidang Crater</h1>
-              <small>Sikidang Crater is a volcanic wonder with active geysers, offering stunning views and a surreal experience for visitors.</small>
-              <a rel="nofollow" href="https://www.instagram.com/lokalaku_trip/">Read More</a>
-            </figcaption>
-          </figure>
-        </li>
-
-        <li class="col-md-6 col-sm-6">
-          <figure>
-            <div><img src="images/gallery-img2.jpg" alt="Mount Bromo Sunrise Viewpoint"></div>
-            <figcaption>
-              <h1>Mount Bromo</h1>
-              <small>Mount Bromo features iconic landscapes and thrilling sunrise views. Popular spots include Bromo Crater, Whispering Sands, and Penanjakan Viewpoint.</small>
-              <a rel="nofollow" href="https://www.instagram.com/lokalaku_trip/">Read More</a>
-            </figcaption>
-          </figure>
-        </li>
-
-        <li class="col-md-6 col-sm-6">
-          <figure>
-            <div><img src="images/gallery-img3.jpg" alt="Ijen Crater Blue Flame Volcano"></div>
-            <figcaption>
-              <h1>Ijen Crater</h1>
-              <small>Visit Ijen for its breathtaking turquoise lake and the rare blue flame phenomenon, alongside traditional sulfur mining activities.</small>
-              <a rel="nofollow" href="https://www.instagram.com/lokalaku_trip/">Read More</a>
-            </figcaption>
-          </figure>
-        </li>
-
-        <li class="col-md-6 col-sm-6">
-          <figure>
-            <div><img src="images/gallery-img4.jpg" alt="Florawisata Santerra de Laponte Garden Malang"></div>
-            <figcaption>
-              <h1>Florawisata Santerra</h1>
-              <small>Florawisata Santerra delights with a European-themed flower park, filled with vibrant blooms and Instagram-worthy spots.</small>
-              <a rel="nofollow" href="https://www.instagram.com/lokalaku_trip/">Read More</a>
-            </figcaption>
-          </figure>
-        </li>
-      </ul>
-
-      <ul class="grid cs-style-4">
-        <li class="col-md-6 col-sm-6">
-          <figure>
-            <div><img src="images/gallery-img5.jpg" alt="Malang and Yogyakarta City Tour"></div>
-            <figcaption>
-              <h1>Malang – Yogyakarta Tour</h1>
-              <small>1–4 Persons • 4 Days 3 Nights • Innova Reborn Transportation • 2-Night Hotel • Driver + Fuel • Toll & Parking • City highlights tour.</small>
-              <a rel="nofollow" href="https://www.instagram.com/lokalaku_trip/">Read More</a>
-            </figcaption>
-          </figure>
-        </li>
-
-        <li class="col-md-6 col-sm-6">
-          <figure>
-            <div><img src="images/gallery-img6.jpg" alt="Bromo and Merapi Adventure Tour"></div>
-            <figcaption>
-              <h1>Bromo – Merapi Tour</h1>
-              <small>1–4 Persons • 4 Days 3 Nights • Visit Malang, Yogyakarta, Mount Bromo & Merapi • Jeep tours • Entrance tickets • Hotel stay included.</small>
-              <a rel="nofollow" href="https://www.instagram.com/lokalaku_trip/">Read More</a>
-            </figcaption>
-          </figure>
-        </li>
-
-        <li class="col-md-6 col-sm-6">
-          <figure>
-            <div><img src="images/gallery-img7.jpg" alt="Top Tourist Attractions in Malang"></div>
-            <figcaption>
-              <h1>Malang Tourism</h1>
-              <small>Malang features educational parks like Jatim Park and Milkindo Green Farm, making it perfect for family-friendly tourism.</small>
-              <a rel="nofollow" href="https://www.instagram.com/lokalaku_trip/">Read More</a>
-            </figcaption>
-          </figure>
-        </li>
-
-        <li class="col-md-6 col-sm-6">
-          <figure>
-            <div><img src="images/gallery-img8.jpg" alt="Bali Island Travel Highlights"></div>
-            <figcaption>
-              <h1>Bali Tourism</h1>
-              <small>Discover Bali's tropical beaches, vibrant culture, temples, and scenic landscapes. A must-visit paradise for travelers worldwide.</small>
-              <a rel="nofollow" href="https://www.instagram.com/lokalaku_trip/">Read More</a>
-            </figcaption>
-          </figure>
-        </li>
-      </ul>
-
     </div>
-  </div>
-</section>
-
-  <!-- Contact Section -->
-  <section id="contact">
-    <div class="container">
-      <div class="row">
-
-        <div class="col-md-offset-1 col-md-10 col-sm-12">
-
-          <div class="col-lg-offset-1 col-lg-10 section-title wow fadeInUp" data-wow-delay="0.4s">
-            <h1>Send a Message</h1>
-            <p>If you'd like to visit these attractions, send us a message. Get great deals on every destination you choose.</p>
-          </div>
-
-          <!-- ✅ Formspree Contact Form (Optimized) -->
-          <form action="https://formspree.io/f/mldlpwzr" method="POST" class="wow fadeInUp" data-wow-delay="0.8s">
-            <div class="col-md-6 col-sm-6 form-group">
-              <label for="name" class="sr-only">Your Name</label>
-              <input name="name" id="name" type="text" class="form-control" placeholder="Your Name" required>
+    <div class="custom-modal" id="modal-dieng-bromo-jogja-merapi">
+        <div class="custom-modal-content">
+            <span class="custom-modal-close" onclick="closeModal('modal-dieng-bromo-jogja-merapi')">&times;</span>
+            <div class="custom-slideshow">
+                <div class="slides-wrapper">
+                    <div class="slide"><img alt="Destinasi Bali" src="images/bali-tourism.webp"/></div>
+                    <div class="slide"><img alt="Destinasi Bromo Ijen" src="images/bromo-ijen-tour.webp"/></div>
+                    <div class="slide"><img alt="Destinasi Dieng Bromo Jogja" src="images/dieng-bromo-jogja-merapi.webp"/></div>
+                    <div class="slide"><img alt="Destinasi Malang Jogja" src="images/malang-jogja-explore.webp"/></div>
+                    <div class="slide"><img alt="Destinasi Malang City Tour" src="images/malang-city-tour.webp"/></div>
+                    <div class="slide"><img alt="Destinasi Kawah Sikidang" src="images/sikidang-explore.webp"/></div>
+                    <div class="slide"><img alt="Destinasi Yogyakarta" src="images/yogyakarta-explore.webp"/></div>
+                    <div class="slide"><img alt="Destinasi Baluran Banyuwangi" src="images/baluran-banyuwangi-explore.webp"/></div>
+                </div>
+                <div class="slideshow-dots"></div>
             </div>
-            <div class="col-md-6 col-sm-6 form-group">
-              <label for="email" class="sr-only">Your Email</label>
-              <input name="email" id="email" type="email" class="form-control" placeholder="Your Email" required>
+            <h1 class="text-center text-secondary">Dieng &ndash; Bromo &ndash; Jogja &ndash; Merapi</h1>
+            <h2 class="text-center"><span class="price-label">Start from:</span> <span class="lang-price" data-price-en="$220.65" data-price-id="Rp 3.420.000">$220.65</span></h2>
+            <div class="modal-list-wrapper">
+                <ul>
+                    <li>Private AC Transport</li>
+                    <li>3 nights accommodation</li>
+                    <li>All entrance tickets</li>
+                    <li>Jeep for Bromo & Merapi</li>
+                    <li>Daily Breakfast</li>
+                    <li>Meeting point: Yogyakarta/Malang</li>
+                </ul>
             </div>
-            <div class="col-md-12 col-sm-12 form-group">
-              <label for="message" class="sr-only">Your Message</label>
-              <textarea name="message" id="message" rows="6" class="form-control" placeholder="Your Message" required></textarea>
-            </div>
-
-            <!-- Anti-spam honeypot -->
-            <input type="text" name="_gotcha" style="display:none">
-            
-            <!-- Redirect to thank-you page -->
-            <input type="hidden" name="_redirect" value="https://lokalaku.vercel.app/thank-you.html">
-
-            <div class="col-md-offset-3 col-md-6 col-sm-offset-3 col-sm-6">
-              <button type="submit" class="form-control btn btn-primary">Send Message</button>
-            </div>
-          </form>
-
-          <!-- WhatsApp Button -->
-          <div class="col-md-offset-3 col-md-6 col-sm-offset-3 col-sm-6 text-center wow fadeInUp" data-wow-delay="1s" style="margin-top: 20px;">
-            <a href="https://wa.me/6281331421031?text=Hi%20LokaLaku%20Trip%2C%20I%27m%20interested%20in%20your%20tour%20packages!" 
-               target="_blank" 
-               class="btn btn-success btn-lg" 
-               style="width: 100%; font-size: 18px;"
-               rel="noopener noreferrer">
-              <i class="fa fa-whatsapp"></i> Contact via WhatsApp
-            </a>
-          </div>
-
+            <a class="wa-button btn btn-success" href="https://wa.me/6281331421031?text=Hi%2C%20I'm%20interested%20in%20booking%20the%20Dieng-Bromo-Jogja-Merapi%20package." target="_blank"><i class="fa-brands fa-whatsapp"></i> Book via WhatsApp</a>
         </div>
-
-      </div>
     </div>
-  </section>
+    <div class="custom-modal" id="modal-malang-to-jogja-explore">
+        <div class="custom-modal-content">
+            <span class="custom-modal-close" onclick="closeModal('modal-malang-to-jogja-explore')">&times;</span>
+            <div class="custom-slideshow">
+                <div class="slides-wrapper">
+                    <div class="slide"><img alt="Destinasi Bali" src="images/bali-tourism.webp"/></div>
+                    <div class="slide"><img alt="Destinasi Bromo Ijen" src="images/bromo-ijen-tour.webp"/></div>
+                    <div class="slide"><img alt="Destinasi Dieng Bromo Jogja" src="images/dieng-bromo-jogja-merapi.webp"/></div>
+                    <div class="slide"><img alt="Destinasi Malang Jogja" src="images/malang-jogja-explore.webp"/></div>
+                    <div class="slide"><img alt="Destinasi Malang City Tour" src="images/malang-city-tour.webp"/></div>
+                    <div class="slide"><img alt="Destinasi Kawah Sikidang" src="images/sikidang-explore.webp"/></div>
+                    <div class="slide"><img alt="Destinasi Yogyakarta" src="images/yogyakarta-explore.webp"/></div>
+                    <div class="slide"><img alt="Destinasi Baluran Banyuwangi" src="images/baluran-banyuwangi-explore.webp"/></div>
+                </div>
+                <div class="slideshow-dots"></div>
+            </div>
+            <h1 class="text-center text-secondary">Malang to Jogja Explore</h1>
+            <h2 class="text-center"><span class="price-label">Start from:</span> <span class="lang-price" data-price-en="$151.61" data-price-id="Rp 2.350.000">$151.61</span></h2>
+            <div class="modal-list-wrapper">
+                <ul>
+                    <li>Private AC Transport</li>
+                    <li>2 nights accommodation</li>
+                    <li>All entrance tickets</li>
+                    <li>Local Guide in Yogyakarta</li>
+                    <li>Daily Breakfast</li>
+                    <li>Meeting point: Malang</li>
+                </ul>
+            </div>
+            <a class="wa-button btn btn-success" href="https://wa.me/6281331421031?text=Hi%2C%20I'm%20interested%20in%20booking%20the%20Malang%20to%20Jogja%20Explore%20package." target="_blank"><i class="fa-brands fa-whatsapp"></i> Book via WhatsApp</a>
+        </div>
+    </div>
+    <div class="custom-modal" id="modal-malang-city-tour">
+        <div class="custom-modal-content">
+            <span class="custom-modal-close" onclick="closeModal('modal-malang-city-tour')">&times;</span>
+            <div class="custom-slideshow">
+                <div class="slides-wrapper">
+                    <div class="slide"><img alt="Destinasi Bali" src="images/bali-tourism.webp"/></div>
+                    <div class="slide"><img alt="Destinasi Bromo Ijen" src="images/bromo-ijen-tour.webp"/></div>
+                    <div class="slide"><img alt="Destinasi Dieng Bromo Jogja" src="images/dieng-bromo-jogja-merapi.webp"/></div>
+                    <div class="slide"><img alt="Destinasi Malang Jogja" src="images/malang-jogja-explore.webp"/></div>
+                    <div class="slide"><img alt="Destinasi Malang City Tour" src="images/malang-city-tour.webp"/></div>
+                    <div class="slide"><img alt="Destinasi Kawah Sikidang" src="images/sikidang-explore.webp"/></div>
+                    <div class="slide"><img alt="Destinasi Yogyakarta" src="images/yogyakarta-explore.webp"/></div>
+                    <div class="slide"><img alt="Destinasi Baluran Banyuwangi" src="images/baluran-banyuwangi-explore.webp"/></div>
+                </div>
+                <div class="slideshow-dots"></div>
+            </div>
+            <h1 class="text-center text-secondary">Malang City Tour</h1>
+            <h2 class="text-center"><span class="price-label">Start from:</span> <span class="lang-price" data-price-en="$41.94" data-price-id="Rp 650.000">$41.94</span></h2>
+            <div class="modal-list-wrapper">
+                <ul>
+                    <li>Private AC Transport (Full Day)</li>
+                    <li>Driver & Fuel</li>
+                    <li>Kampung Warna Warni Jodipan</li>
+                    <li>Taman Bunga Selecta</li>
+                    <li>Parking & Toll fees</li>
+                    <li>Meeting point: Hotel in Malang</li>
+                </ul>
+            </div>
+            <a class="wa-button btn btn-success" href="https://wa.me/6281331421031?text=Hi%2C%20I'm%20interested%20in%20booking%20the%20Malang%20City%20Tour%20package." target="_blank"><i class="fa-brands fa-whatsapp"></i> Book via WhatsApp</a>
+        </div>
+    </div>
+    <div class="custom-modal" id="modal-sikidang-explore">
+        <div class="custom-modal-content">
+            <span class="custom-modal-close" onclick="closeModal('modal-sikidang-explore')">&times;</span>
+            <div class="custom-slideshow">
+                <div class="slides-wrapper">
+                    <div class="slide"><img alt="Destinasi Bali" src="images/bali-tourism.webp"/></div>
+                    <div class="slide"><img alt="Destinasi Bromo Ijen" src="images/bromo-ijen-tour.webp"/></div>
+                    <div class="slide"><img alt="Destinasi Dieng Bromo Jogja" src="images/dieng-bromo-jogja-merapi.webp"/></div>
+                    <div class="slide"><img alt="Destinasi Malang Jogja" src="images/malang-jogja-explore.webp"/></div>
+                    <div class="slide"><img alt="Destinasi Malang City Tour" src="images/malang-city-tour.webp"/></div>
+                    <div class="slide"><img alt="Destinasi Kawah Sikidang" src="images/sikidang-explore.webp"/></div>
+                    <div class="slide"><img alt="Destinasi Yogyakarta" src="images/yogyakarta-explore.webp"/></div>
+                    <div class="slide"><img alt="Destinasi Baluran Banyuwangi" src="images/baluran-banyuwangi-explore.webp"/></div>
+                </div>
+                <div class="slideshow-dots"></div>
+            </div>
+            <h1 class="text-center text-secondary">Sikidang Explore</h1>
+            <h2 class="text-center"><span class="price-label">Start from:</span> <span class="lang-price" data-price-en="$38.06" data-price-id="Rp 590.000">$38.06</span></h2>
+            <div class="modal-list-wrapper">
+                <ul>
+                    <li>Private AC Transport</li>
+                    <li>Driver & Fuel</li>
+                    <li>Entrance to Dieng Plateau</li>
+                    <li>Arjuna Temple Complex</li>
+                    <li>Sikidang Crater</li>
+                    <li>Meeting point: Wonosobo/Yogyakarta</li>
+                </ul>
+            </div>
+            <a class="wa-button btn btn-success" href="https://wa.me/6281331421031?text=Hi%2C%20I'm%20interested%20in%20booking%20the%20Sikidang%20Explore%20package." target="_blank"><i class="fa-brands fa-whatsapp"></i> Book via WhatsApp</a>
+        </div>
+    </div>
+    <div class="custom-modal" id="modal-yogyakarta-explore">
+        <div class="custom-modal-content">
+            <span class="custom-modal-close" onclick="closeModal('modal-yogyakarta-explore')">&times;</span>
+            <div class="custom-slideshow">
+                <div class="slides-wrapper">
+                    <div class="slide"><img alt="Destinasi Bali" src="images/bali-tourism.webp"/></div>
+                    <div class="slide"><img alt="Destinasi Bromo Ijen" src="images/bromo-ijen-tour.webp"/></div>
+                    <div class="slide"><img alt="Destinasi Dieng Bromo Jogja" src="images/dieng-bromo-jogja-merapi.webp"/></div>
+                    <div class="slide"><img alt="Destinasi Malang Jogja" src="images/malang-jogja-explore.webp"/></div>
+                    <div class="slide"><img alt="Destinasi Malang City Tour" src="images/malang-city-tour.webp"/></div>
+                    <div class="slide"><img alt="Destinasi Kawah Sikidang" src="images/sikidang-explore.webp"/></div>
+                    <div class="slide"><img alt="Destinasi Yogyakarta" src="images/yogyakarta-explore.webp"/></div>
+                    <div class="slide"><img alt="Destinasi Baluran Banyuwangi" src="images/baluran-banyuwangi-explore.webp"/></div>
+                </div>
+                <div class="slideshow-dots"></div>
+            </div>
+            <h1 class="text-center text-secondary">Yogyakarta Explore</h1>
+            <h2 class="text-center"><span class="price-label">Start from:</span> <span class="lang-price" data-price-en="$138.71" data-price-id="Rp 2.150.000">$138.71</span></h2>
+            <div class="modal-list-wrapper">
+                <ul>
+                    <li>Private AC Transport</li>
+                    <li>2 nights accommodation</li>
+                    <li>Borobudur & Prambanan Tickets</li>
+                    <li>Jeep for Merapi Lava Tour</li>
+                    <li>Daily Breakfast</li>
+                    <li>Meeting point: Hotel in Yogyakarta</li>
+                </ul>
+            </div>
+            <a class="wa-button btn btn-success" href="https://wa.me/6281331421031?text=Hi%2C%20I'm%20interested%20in%20booking%20the%20Yogyakarta%20Explore%20package." target="_blank"><i class="fa-brands fa-whatsapp"></i> Book via WhatsApp</a>
+        </div>
+    </div>
+    <div class="custom-modal" id="modal-baluran-banyuwangi-explore">
+        <div class="custom-modal-content">
+            <span class="custom-modal-close" onclick="closeModal('modal-baluran-banyuwangi-explore')">&times;</span>
+            <div class="custom-slideshow">
+                <div class="slides-wrapper">
+                    <div class="slide"><img alt="Destinasi Bali" src="images/bali-tourism.webp"/></div>
+                    <div class="slide"><img alt="Destinasi Bromo Ijen" src="images/bromo-ijen-tour.webp"/></div>
+                    <div class="slide"><img alt="Destinasi Dieng Bromo Jogja" src="images/dieng-bromo-jogja-merapi.webp"/></div>
+                    <div class="slide"><img alt="Destinasi Malang Jogja" src="images/malang-jogja-explore.webp"/></div>
+                    <div class="slide"><img alt="Destinasi Malang City Tour" src="images/malang-city-tour.webp"/></div>
+                    <div class="slide"><img alt="Destinasi Kawah Sikidang" src="images/sikidang-explore.webp"/></div>
+                    <div class="slide"><img alt="Destinasi Yogyakarta" src="images/yogyakarta-explore.webp"/></div>
+                    <div class="slide"><img alt="Destinasi Baluran Banyuwangi" src="images/baluran-banyuwangi-explore.webp"/></div>
+                </div>
+                <div class="slideshow-dots"></div>
+            </div>
+            <h1 class="text-center text-secondary">Baluran &ndash; Banyuwangi Explore</h1>
+            <h2 class="text-center"><span class="price-label">Start from:</span> <span class="lang-price" data-price-en="$151.61" data-price-id="Rp 2.350.000">$151.61</span></h2>
+            <div class="modal-list-wrapper">
+                <ul>
+                    <li>Private AC Transport</li>
+                    <li>2 nights accommodation</li>
+                    <li>Baluran National Park Ticket</li>
+                    <li>Bangsring Underwater</li>
+                    <li>Local Guide</li>
+                    <li>Meeting point: Banyuwangi</li>
+                </ul>
+            </div>
+            <a class="wa-button btn btn-success" href="https://wa.me/6281331421031?text=Hi%2C%20I'm%20interested%20in%20booking%20the%20Baluran-Banyuwangi%20Explore%20package." target="_blank"><i class="fa-brands fa-whatsapp"></i> Book via WhatsApp</a>
+        </div>
+    </div>
+    <script defer src="js/jquery.js"></script>
+    <script defer src="js/bootstrap.min.js"></script>
+    <script defer src="js/vegas.min.js"></script>
+    <script defer src="js/modernizr.custom.js"></script>
+    <script defer src="js/toucheffects.js"></script>
+    <script defer src="js/owl.carousel.min.js"></script>
+    <script defer src="js/smoothscroll.js"></script>
+    <script defer src="js/wow.min.js"></script>
+    <script defer src="js/custom.js"></script>
+    <script defer src="/_vercel/speed-insights/script.js"></script>
 
-  <!-- Back to top -->
-  <a href="#" class="go-top"><i class="fa fa-angle-up"></i></a>
+    <script>
+        // Store slideshow controls to be accessed globally, keyed by modal ID
+        const slideshowControls = {};
 
-  <!-- JavaScript -->
-  <script src="js/jquery.js" defer></script>
-  <script src="js/bootstrap.min.js" defer></script>
-  <script src="js/vegas.min.js" defer></script>
-  <script src="js/modernizr.custom.js" defer></script>
-  <script src="js/toucheffects.js" defer></script>
-  <script src="js/owl.carousel.min.js" defer></script>
-  <script src="js/smoothscroll.js" defer></script>
-  <script src="js/wow.min.js" defer></script>
-  <script src="js/custom.js" defer></script>
+        function openModal(modalId, startIndex = 0) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                // Access the controls for this modal's slideshow and set the start slide
+                if (slideshowControls[modalId]) {
+                    slideshowControls[modalId].goToSlide(startIndex);
+                    slideshowControls[modalId].resetInterval();
+                }
+                
+                modal.style.display = 'block';
+                document.body.classList.add('modal-open');
+                setTimeout(() => {
+                    modal.classList.add('active');
+                }, 10);
+            }
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.remove('active');
+                setTimeout(() => {
+                    modal.style.display = 'none';
+                    document.body.classList.remove('modal-open');
+                }, 300);
+            }
+        }
+
+        window.addEventListener('click', function(event) {
+            if (event.target.classList.contains('custom-modal')) {
+                closeModal(event.target.id);
+            }
+        });
+
+        window.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                const activeModal = document.querySelector('.custom-modal.active');
+                if (activeModal) {
+                    closeModal(activeModal.id);
+                }
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize slideshows within each modal
+            document.querySelectorAll('.custom-modal').forEach(modal => {
+                const slideshow = modal.querySelector('.custom-slideshow');
+                if (!slideshow) return;
+
+                const wrapper = slideshow.querySelector('.slides-wrapper');
+                const slides = slideshow.querySelectorAll('.slide');
+                const dotsContainer = slideshow.querySelector('.slideshow-dots');
+                
+                if (slides.length <= 1) {
+                    if (dotsContainer) dotsContainer.style.display = 'none';
+                    return;
+                }
+
+                let currentIndex = 0;
+                let slideInterval;
+                dotsContainer.innerHTML = ''; // Clear existing dots to prevent duplicates
+
+                slides.forEach((_, i) => {
+                    const dot = document.createElement('span');
+                    dot.classList.add('dot');
+                    dot.addEventListener('click', () => {
+                        controls.goToSlide(i);
+                        controls.resetInterval();
+                    });
+                    dotsContainer.appendChild(dot);
+                });
+
+                const dots = dotsContainer.querySelectorAll('.dot');
+                
+                // Create a set of control functions for this specific slideshow
+                const controls = {
+                    updateDots: function() {
+                        dots.forEach(dot => dot.classList.remove('active'));
+                        if (dots[currentIndex]) {
+                            dots[currentIndex].classList.add('active');
+                        }
+                    },
+                    goToSlide: function(index) {
+                        currentIndex = index;
+                        wrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
+                        this.updateDots();
+                    },
+                    nextSlide: function() {
+                        currentIndex = (currentIndex + 1) % slides.length;
+                        this.goToSlide(currentIndex);
+                    },
+                    startSlideshow: function() {
+                        clearInterval(slideInterval);
+                        slideInterval = setInterval(() => this.nextSlide(), 3000);
+                    },
+                    resetInterval: function() {
+                        this.startSlideshow();
+                    }
+                };
+
+                // Store the controls in the global object using the modal's ID
+                slideshowControls[modal.id] = controls;
+                
+                // Initial setup for the slideshow
+                controls.goToSlide(0);
+                controls.startSlideshow();
+            });
+        });
+    </script>
 </body>
 </html>
+
+
+
+
